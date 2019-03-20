@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<!-- text="Unloading Point -->
+	<Label text="Unloading Point"/>
+	<Input name="Ablad" id="Ablad_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'create'? true : false }" visible="true"
+		value="{ path: 'Ablad', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:25, nullable:false } }" fieldGroupIds="keyFields"/>
+	<!--  Cosr Center -->
+	<Label text="Cosr Center"/>
+	<Input name="Kstrg" id="Kstrg_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'create'? true : false }" visible="true"
+		value="{ path: 'Kstrg', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:12, nullable:false } }" fieldGroupIds="keyFields"/>
+	<!-- Plant -->
+	<Label text="Plant"/>
+	<Input name="Werks" id="Werks_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'create'? true : false }" visible="true"
+		value="{ path: 'Werks', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false } }" fieldGroupIds="keyFields"/>
+	<Label text="Material/LUM"/>
+	<!--<Input name="Zmorlum" id="Zmorlum_id" selectedItemId="item1" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true" value="{ path: 'Zmorlum', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>-->
+	<Select selectedKey="{Zmorlum}"  id="selectZmorlum_id" enabled="{= ${viewModel>/mode} === 'display'? false: true}"
+		visible="true">
+		<items>
+			<core:ListItem text="LUM" key="LUM" id="item1"/>
+			<core:ListItem text="MATERIAL" key="MATERIAL" id="item2"/></items>
+	</Select>
+	<Label text="Cutoff Time"/>
+	<!--<Input name="Zcotm" id="Zcotm_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true" value="{ path: 'Zcotm', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:8, nullable:false } }"/>-->
+<!--	<TimePicker displayFormat="HH:mm:ss" localeId="en-US" placeholderSymbol="-" mask="h9:59:59 AB" id="Zcotm_id" secondsStep="60" value="{Zcotm}"
+		enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true" valueFormat="HH:mm"/>
+-->	
+	<MaskInput  id="Zcotm_id" mask="99:99" value="{Zcotm}"  placeholderSymbol="-"  placeholder="Enter time HH:mm format"
+		enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true" />
+	<Label text="Route name"/>
+	<Input name="Zrnm" id="Zrnm_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true"
+		value="{ path: 'Zrnm', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+	<Label text="Proposed shipment"/>
+	<Input name="Zprship" id="Zprship_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true"
+		value="{ path: 'Zprship', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+	<Label text="Delivery group"/>
+	<Input name="Zdlygrp" id="Zdlygrp_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true"
+		value="{ path: 'Zdlygrp', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:25, nullable:false } }"/>
+	<Label text="Carrier"/>
+	<Input name="Zcarrier" id="Zcarrier_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true"
+		value="{ path: 'Zcarrier', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+	<Label text="Routing Table Sort group"/>
+	<Input name="Zsortgrp" id="Zsortgrp_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true"
+		value="{ path: 'Zsortgrp', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:25, nullable:false } }"/>
+	<Label text="Email"/>
+	<Input name="Zemail" id="Zemail_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+		enabled="{= ${viewModel>/mode} === 'display'? false: true}" visible="true"
+		value="{ path: 'Zemail', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:50, nullable:false } }"/>
+	<!-- Internal Fields -->
+	<Label text="Route is used"/>
+	<Switch xmlns:smart="sap.ui.comp.smartfield" id="switchZusedId" customTextOff="No" customTextOn="Yes" name="switchZusedId" state="{'Zused'}"
+		enabled="false"/>
+	<Label text="Changed By"/>
+	<Input name="ZChangedBy" id="ZChangedBy_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="false" visible="true"
+		value="{ path: 'ZChangedBy', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:12, nullable:false } }"/>
+	<Label text="Changed On"/>
+	<DatePicker name="ZChangedOn" value="{ path: 'ZChangedOn', type: 'sap.ui.model.type.Date'}" id="ZChangedOn_id" enabled="false"
+		visible="true"/>
+	<Label text="Changed At"/>
+	<Input name="ZChangedAt" id="ZChangedAt_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="false" visible="true"
+		value="{ path: 'ZChangedAt', type: 'sap.ui.model.odata.type.Time' , constraints:{ nullable:false } }"/>
+</core:FragmentDefinition>
